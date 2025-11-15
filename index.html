@@ -1,514 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Editorial Consultant – [Your Name]</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-    /* BASIC RESET */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #f6f2eb;
-      --bg-alt: #f0e9df;
-      --ink: #1f2933;
-      --muted: #6b7280;
-      --accent: #b45309;
-      --border: #ddd0c0;
-      --radius: 10px;
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-serif: "Georgia", "Times New Roman", serif;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* LAYOUT */
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 32px 18px 64px;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 16px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 18px;
-      margin-bottom: 32px;
-    }
-
-    .brand {
-      max-width: 70%;
-    }
-
-    .brand-title {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .brand-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    .header-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-align: right;
-    }
-
-    .header-note strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-      gap: 40px;
-    }
-
-    /* LEFT COLUMN – MAIN CONTENT */
-    .hero {
-      margin-bottom: 32px;
-    }
-
-    .hero-kicker {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 18px;
-      max-width: 32rem;
-    }
-
-    .hero-inline-list {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 22px;
-    }
-
-    .hero-inline-list span {
-      white-space: nowrap;
-    }
-
-    .hero-inline-list span + span::before {
-      content: " • ";
-      margin: 0 4px;
-    }
-
-    .primary-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--ink);
-      background: transparent;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-decoration: none;
-      color: var(--ink);
-    }
-
-    .primary-cta span.icon {
-      font-size: 1.1rem;
-    }
-
-    .primary-cta:hover {
-      background: #e5daca;
-    }
-
-    /* SECTION STYLES (LEFT COLUMN) */
-    section {
-      margin-bottom: 28px;
-    }
-
-    .section-heading {
-      display: inline-block;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 4px;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      margin-bottom: 12px;
-    }
-
-    .section-body {
-      font-size: 0.94rem;
-      color: var(--ink);
-    }
-
-    .section-body p + p {
-      margin-top: 10px;
-    }
-
-    .two-column-list {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
-      gap: 16px;
-      margin-top: 8px;
-    }
-
-    .list-title {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 4px;
-      color: var(--muted);
-    }
-
-    .plain-list {
-      list-style: none;
-      padding-left: 0;
-      font-size: 0.94rem;
-    }
-
-    .plain-list li {
-      padding: 2px 0;
-    }
-
-    /* RIGHT COLUMN – SIDEBAR */
-    .sidebar-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 14px 16px;
-      background: var(--bg-alt);
-      font-size: 0.9rem;
-      margin-bottom: 14px;
-    }
-
-    .sidebar-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      margin-bottom: 6px;
-    }
-
-    .sidebar-card p + p {
-      margin-top: 8px;
-    }
-
-    .sidebar-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .tag-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      padding-left: 0;
-      margin-top: 4px;
-    }
-
-    .tag {
-      font-size: 0.78rem;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #fdfaf5;
-    }
-
-    .small-note {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 8px;
-    }
-
-    .project-list {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 6px;
-    }
-
-    .project-list li {
-      padding: 4px 0;
-      border-bottom: 1px solid #e1d7c7;
-    }
-
-    .project-list li:last-child {
-      border-bottom: none;
-    }
-
-    .project-title {
-      font-weight: 500;
-    }
-
-    .project-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .contact-block {
-      font-size: 0.9rem;
-    }
-
-    .contact-block a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .contact-block a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      margin-top: 32px;
-      border-top: 1px solid var(--border);
-      padding-top: 14px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      main {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .brand {
-        max-width: 100%;
-      }
-
-      .header-note {
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-title {
-        font-size: 1.6rem;
-      }
-
-      .two-column-list {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Lisi Communications | Strategic Clarity & Impact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Light Theme Setup */
+        :root {
+            --primary-bg: #ffffff; /* White */
+            --accent-color: #4f46e5; /* Indigo */
+            --text-color: #1f2937; /* Dark Gray */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+        }
+        .section-heading {
+            /* Indigo border for section titles */
+            border-left: 4px solid var(--accent-color);
+        }
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        .card-shadow:hover {
+            /* Subtle shadow effect on hover, mimicking the clean professional look */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: var(--accent-color);
+        }
+    </style>
 </head>
-<body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <div class="brand-title">[Your Name]</div>
-        <div class="brand-subtitle">Editorial consultant for people doing serious work.</div>
-      </div>
-      <div class="header-note">
-        <div><strong>Currently available</strong> for short and mid-length projects.</div>
-        <div>Remote-first · Collaborating with teams across time zones.</div>
-      </div>
+<body class="antialiased">
+
+    <!-- Navigation Bar (Sticky, Light Theme) -->
+    <header class="sticky top-0 z-50 bg-white shadow-md border-b border-gray-200">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand Name -->
+                <a href="#hero" class="text-xl font-extrabold text-gray-900 transition duration-300">
+                    Anna Lisi <span class="text-indigo-600">Strategy</span>
+                </a>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#services" class="nav-link text-sm font-medium text-gray-600 hover:text-indigo-600 transition duration-150">Capabilities</a>
+                    <a href="#projects" class="nav-link text-sm font-medium text-gray-600 hover:text-indigo-600 transition duration-150">Impact</a>
+                    <a href="#strategy" class="nav-link text-sm font-medium text-gray-600 hover:text-indigo-600 transition duration-150">Approach</a>
+                    <a href="#contact" class="nav-link text-sm font-medium py-2 px-6 rounded-lg bg-indigo-600 text-white shadow-lg hover:bg-indigo-700 transition duration-300">Start Project</a>
+                </div>
+                
+                <!-- Mobile Menu Button (Placeholder) -->
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <main>
-      <!-- LEFT COLUMN -->
-      <div>
-        <section class="hero">
-          <div class="hero-kicker">editor → consultant</div>
-          <h1 class="hero-title">
-            I help you say complicated things in a way people actually read.
-          </h1>
-          <p class="hero-subtitle">
-            I work with researchers, nonprofits, and technical teams who have good ideas,
-            complex material, and no patience for fluff. My work sits between editing, thinking,
-            and quietly asking, “What are we really trying to say here?”
-          </p>
-          <p class="hero-inline-list">
-            <span>Reports &amp; research</span>
-            <span>Guidance &amp; standards</span>
-            <span>Training materials</span>
-            <span>Thought leadership</span>
-          </p>
-          <a href="#contact" class="primary-cta">
-            <span>Request a short consultation</span>
-            <span class="icon">→</span>
-          </a>
-        </section>
-
-        <section aria-labelledby="about-heading">
-          <h2 id="about-heading" class="section-heading">about</h2>
-          <div class="section-body">
-            <p>
-              I spent years as an editor inside teams that were under-resourced, overloaded,
-              and working on things that actually matter. My role was to make sure the final
-              output respected both the subject and the reader.
-            </p>
-            <p>
-              Now I work independently with organizations that need more than a proofread.
-              I help you shape the idea, structure the argument, and make decisions about what
-              belongs on the page – and what doesn’t. The goal: documents that are accurate,
-              readable, and honest about their limitations.
-            </p>
-          </div>
-        </section>
-
-        <section aria-labelledby="services-heading">
-          <h2 id="services-heading" class="section-heading">services</h2>
-          <div class="section-body">
-            <p>
-              I usually work on one of three things: making an existing document better;
-              planning communications for a project or program; or sitting beside your team as
-              a quiet, long-term editorial partner.
-            </p>
-
-            <div class="two-column-list">
-              <div>
-                <div class="list-title">Editing & writing</div>
-                <ul class="plain-list">
-                  <li>Developmental editing: structure, argument, coherence.</li>
-                  <li>Line editing: clarity, tone, and rhythm sentence by sentence.</li>
-                  <li>Plain-language rewrites for technical or policy-heavy content.</li>
-                  <li>Light ghostwriting based on notes, transcripts, or slides.</li>
-                </ul>
-              </div>
-              <div>
-                <div class="list-title">Consulting & support</div>
-                <ul class="plain-list">
-                  <li>Helping you decide what to publish and why.</li>
-                  <li>Mapping audiences, formats, and channels for a project.</li>
-                  <li>Designing templates and document standards you can keep using.</li>
-                  <li>On-call editorial partner for a program, team, or small org.</li>
-                </ul>
-              </div>
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto">
+        
+        <!-- 1. Hero Section (Updated Copy) -->
+        <section id="hero" class="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <span class="text-sm font-semibold text-indigo-600 uppercase tracking-widest">Focused Communications & Editorial</span>
+                    <h1 class="mt-4 text-5xl font-extrabold tracking-tight text-gray-900 sm:text-6xl md:text-7xl">
+                        Does Your Content Need a <span class="text-indigo-600">Human Touch</span>?
+                    </h1>
+                    <p class="mt-8 text-xl text-gray-600 max-w-xl">
+                        Improve your message, brand, story, research, and design with a thorough review by a skilled and experienced communications specialist.
+                    </p>
+                    <div class="mt-10 flex space-x-4">
+                        <a href="#contact" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-lg shadow-lg text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.02]">
+                            Define Your Project Scope
+                        </a>
+                        <a href="#services" class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-transparent hover:bg-gray-100 transition duration-300 shadow-sm">
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+                <!-- Abstract Design Placeholder (Light Background) -->
+                <div class="mt-16 lg:mt-0 lg:col-span-5 flex justify-center items-center">
+                    <img src="https://placehold.co/500x350/ffffff/4f46e5?text=Strategic+Clarity" alt="Geometric graphic representing data structure and communication flow." class="rounded-xl shadow-2xl transition duration-500 border border-gray-300">
+                </div>
             </div>
-          </div>
         </section>
 
-        <section aria-labelledby="approach-heading">
-          <h2 id="approach-heading" class="section-heading">how i work</h2>
-          <div class="section-body">
-            <p><strong>1. Short call, clear decision.</strong> We talk for 30–45 minutes about the work,
-              your constraints, and what has to be true for this to feel successful.</p>
-            <p><strong>2. Lightweight plan.</strong> I send a one-page note with what I’ll do,
-              how much I’ll touch, and how we’ll give each other feedback.</p>
-            <p><strong>3. Deep, quiet work.</strong> You get back marked-up documents and a short written
-              summary of decisions, questions, and options, not just a file full of tracked changes.</p>
-            <p><strong>4. Hand-over, not drop-off.</strong> Where useful, I add a short “editor’s note”
-              you can keep and reuse – style decisions, patterns that worked, and things to avoid next time.</p>
-          </div>
+        <!-- 2. Core Value Proposition (Updated expertise) -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 border-t border-b border-gray-200">
+            <div class="text-center">
+                <p class="text-2xl font-medium text-gray-700 max-w-4xl mx-auto">
+                    I have **20+ years of experience** in brand and publications management, content strategy development, and art direction.
+                </p>
+                <p class="mt-3 text-3xl font-extrabold text-indigo-600 sm:text-4xl">
+                    EDITOR | WRITER | DESIGN MANAGER | STRATEGIST
+                </p>
+            </div>
         </section>
-      </div>
 
-      <!-- RIGHT COLUMN / SIDEBAR -->
-      <aside aria-label="Sidebar information">
-        <div class="sidebar-card">
-          <div class="sidebar-label">who this is for</div>
-          <h3>You don’t need a brand overhaul. You need your words to stop fighting you.</h3>
-          <p>
-            Clients are usually researchers, program leads, or small communications teams who
-            are juggling too many deliverables and don’t have time to babysit a consultant.
-          </p>
-          <ul class="tag-list">
-            <li class="tag">Global health & social impact</li>
-            <li class="tag">Academic & applied research</li>
-            <li class="tag">Policy & standards</li>
-            <li class="tag">Nonprofits & small orgs</li>
-          </ul>
-          <p class="small-note">
-            If your work is highly polished marketing copy or conversion funnels, I am not the right person.
-          </p>
-        </div>
+        <!-- 3. Capabilities Section (Services - Detailed from Doc) -->
+        <section id="services" class="py-20 px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 section-heading pl-4 mb-16">Core Capabilities</h2>
+            
+            <div class="space-y-16">
+                
+                <!-- Capability 1: Editorial and Writing Services -->
+                <div class="bg-white p-10 rounded-2xl shadow-lg transition duration-300 border border-gray-200 card-shadow">
+                    <div class="flex flex-col md:flex-row items-start">
+                        <div class="flex-shrink-0 mb-4 md:mb-0">
+                            <!-- Indigo Icon -->
+                            <svg class="h-10 w-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                        </div>
+                        <div class="md:ml-6 flex-grow">
+                            <h3 class="text-3xl font-bold text-gray-900 mb-3">Editorial and Writing Services</h3>
+                            <p class="text-gray-600 mb-6">
+                                I’m a seasoned writer and editor who can make your copy shine, whether it’s a social media post or a research article.
+                            </p>
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-gray-700 text-sm">
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-2">Core Offerings:</h4>
+                                    <ul class="list-disc list-inside space-y-2 pl-4">
+                                        <li>Copy editing, proofreading, and developmental (substantive) editing.</li>
+                                        <li>Distillation of complex information into digestible content.</li>
+                                        <li>Re-writing for tone and clarity, including for those with English as a second language.</li>
+                                        <li>Fact and reference checking.</li>
+                                        <li>Ghost writing from a structured outline or draft.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-2">Sample Projects Include:</h4>
+                                    <ul class="list-disc list-inside space-y-2 pl-4">
+                                        <li>In-depth editing and review of research articles and technical documentation.</li>
+                                        <li>Ensuring logical flow of training materials/curricula.</li>
+                                        <li>Polishing a blog, social media content, fact sheets, or infographics.</li>
+                                        <li>Fine-tuning resumes and professional bios.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="sidebar-card">
-          <div class="sidebar-label">sample projects</div>
-          <ul class="project-list">
-            <li>
-              <div class="project-title">Flagship report, 90+ pages</div>
-              <div class="project-meta">
-                Restructured, edited, and coordinated with design to produce a report people
-                actually read, not just cite.
-              </div>
-            </li>
-            <li>
-              <div class="project-title">Training materials for practitioners</div>
-              <div class="project-meta">
-                Turned dense technical content into a clear sequence of modules, with examples
-                and language that respect learners’ time.
-              </div>
-            </li>
-            <li>
-              <div class="project-title">Executive summary & slide deck</div>
-              <div class="project-meta">
-                Took a heavy full report and built a concise summary and deck leaders could
-                actually use in real meetings.
-              </div>
-            </li>
-          </ul>
-        </div>
+                <!-- Capability 2: Graphic Design Services -->
+                <div class="bg-white p-10 rounded-2xl shadow-lg transition duration-300 border border-gray-200 card-shadow">
+                    <div class="flex flex-col md:flex-row items-start">
+                        <div class="flex-shrink-0 mb-4 md:mb-0">
+                             <!-- Indigo Icon -->
+                            <svg class="h-10 w-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div class="md:ml-6 flex-grow">
+                            <h3 class="text-3xl font-bold text-gray-900 mb-3">Design and Production Management</h3>
+                            <p class="text-gray-600 mb-6">
+                                I provide layout and formatting support and can connect you directly to an expert graphic designer for creative designs for web and print.
+                            </p>
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-gray-700 text-sm">
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-2">Design & Production Support:</h4>
+                                    <ul class="list-disc list-inside space-y-2 pl-4">
+                                        <li>Publication layout and design (reports, briefs, posters).</li>
+                                        <li>Microsoft/PowerPoint document formatting and custom template creation.</li>
+                                        <li>Accessible content creation and remediation (508 compliance).</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-2">Content Types Supported:</h4>
+                                    <ul class="list-disc list-inside space-y-2 pl-4">
+                                        <li>Advocacy briefs and comprehensive reports.</li>
+                                        <li>Infographics and data visualization materials.</li>
+                                        <li>Social media campaigns and poster creation.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="sidebar-card" id="contact">
-          <div class="sidebar-label">contact</div>
-          <h3>Tell me what you’re working on.</h3>
-          <div class="contact-block">
-            <p>
-              Send an email with:
-            </p>
-            <ul class="plain-list" style="margin-top: 4px; margin-bottom: 8px;">
-              <li>1–2 sentences on what the document or project is.</li>
-              <li>Who needs to read it (honestly).</li>
-              <li>Your deadline and any non-negotiables.</li>
-            </ul>
-            <p>
-              Email: <a href="mailto:you@example.com">you@example.com</a><br>
-              Subject line suggestion: <em>“Editorial help for [project name]”</em>
-            </p>
-            <p class="small-note">
-              If I’m not the right fit, I’ll say so and, where possible, point you in a better direction.
-            </p>
-          </div>
-        </div>
-      </aside>
+        <!-- 4. Project Impact (Projects Section - Detailed from Doc) -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 rounded-xl shadow-inner my-12 border border-gray-200">
+            <h2 class="text-3xl font-extrabold text-gray-900 section-heading pl-4 mb-16">Demonstrated Impact</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1: Oxford Open Digital Health (Refined Title) -->
+                <div class="bg-white rounded-xl p-6 transition duration-300 shadow-md border border-gray-200 hover:border-indigo-600 card-shadow">
+                    <span class="text-indigo-600 text-xs font-semibold uppercase">Editorial Leadership</span>
+                    <h4 class="mt-2 text-xl font-bold text-gray-900">Oxford Open Digital Health Supplement</h4>
+                    <p class="mt-2 text-sm text-gray-500">Co-Guest Editor & Communications (2024)</p>
+                    <p class="mt-4 text-gray-600 text-sm">
+                        Co-guest edited an eight-article supplement on “Building Resilience during Emergencies” exploring digital health investments and data use.
+                    </p>
+                </div>
+
+                <!-- Project 2: Community Health Delivery Partnership (Added detail on Gawande) -->
+                <div class="bg-white rounded-xl p-6 transition duration-300 shadow-md border border-gray-200 hover:border-indigo-600 card-shadow">
+                    <span class="text-indigo-600 text-xs font-semibold uppercase">Production Management</span>
+                    <h4 class="mt-2 text-xl font-bold text-gray-900">Investing in Community Health Workers Guide</h4>
+                    <p class="mt-2 text-sm text-gray-500">Editor & Production Manager (2024)</p>
+                    <p class="mt-4 text-gray-600 text-sm">
+                        Managed editing and production for a key partnership guide on accelerating primary health care, commissioned by former USAID Assistant Administrator Atul Gawande.
+                    </p>
+                </div>
+
+                <!-- Project 3: USAID COVID-19 Guide (Refined Title) -->
+                <div class="bg-white rounded-xl p-6 transition duration-300 shadow-md border border-gray-200 hover:border-indigo-600 card-shadow">
+                    <span class="text-indigo-600 text-xs font-semibold uppercase">Rapid Response Content</span>
+                    <h4 class="mt-2 text-xl font-bold text-gray-900">USAID COVID-19 Home-Based Quality Care Guide</h4>
+                    <p class="mt-2 text-sm text-gray-500">Editor & Production Manager (2020)</p>
+                    <p class="mt-4 text-gray-600 text-sm">
+                        Edited and managed production for USAID’s crucial "Practical Guide for Healthcare Workers" on COVID-19 home-based care.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://propel-health-project.medium.com/to-tackle-population-issues-meet-people-where-theyre-at-53601bd98024" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-700 font-medium transition duration-150 flex items-center justify-center">
+                    View Published Article: To Tackle Population Issues, Meet People Where They’re At
+                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- 5. Strategy Section (Refined Copy) -->
+        <section id="strategy" class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-12 rounded-2xl shadow-2xl border-l-8 border-indigo-600 border border-gray-200">
+                <div class="lg:flex lg:items-center lg:justify-between">
+                    <div class="lg:w-2/3">
+                        <h2 class="text-4xl font-extrabold text-gray-900 mb-4">The Strategic Approach</h2>
+                        <p class="text-lg text-gray-700">
+                            Together, we can create a communications strategy that will drive **meaningful impact**. This involves knowing who you want to reach, understanding their values, and setting measurable outcomes.
+                        </p>
+                        <p class="mt-4 text-xl font-semibold text-indigo-600">
+                            Let’s explore what can be achieved!
+                        </p>
+                    </div>
+                    <div class="lg:w-1/3 mt-8 lg:mt-0 lg:text-right">
+                        <a href="#contact" class="inline-flex items-center justify-center px-10 py-4 border border-transparent text-lg font-bold rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 shadow-xl">
+                            Start Strategic Planning
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Contact Form (Light Theme) -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 rounded-xl shadow-2xl my-12 border border-gray-200">
+            <h2 class="text-3xl font-extrabold text-gray-900 section-heading pl-4 mb-12">Initiate Contact</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl">Fill out the form to request a service. I will respond quickly to discuss how we can achieve your communications goals.</p>
+
+            <!-- Form configured for Netlify deployment -->
+            <form name="contact" method="POST" data-netlify="true" class="space-y-6 max-w-3xl">
+                <!-- Hidden netlify field, important for submission -->
+                <input type="hidden" name="form-name" value="contact" />
+                
+                <!-- Name and Email -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-900 focus:ring-indigo-600 focus:border-indigo-600">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-900 focus:ring-indigo-600 focus:border-indigo-600">
+                    </div>
+                </div>
+
+                <!-- Service Requested (Dropdown) -->
+                <div>
+                    <label for="service" class="block text-sm font-medium text-gray-700">Service Requested</label>
+                    <select id="service" name="service" required class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-900 focus:ring-indigo-600 focus:border-indigo-600 appearance-none">
+                        <option value="" class="bg-white text-gray-500">-- Select a service --</option>
+                        <option value="editorial" class="bg-white">Editorial and Writing Services</option>
+                        <option value="design" class="bg-white">Design and Production Management</option>
+                        <option value="strategy" class="bg-white">Communications Strategy</option>
+                        <option value="other" class="bg-white">Other / Not Sure</option>
+                    </select>
+                </div>
+
+                <!-- Project Description -->
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700">Short description of the project (100 words max)</label>
+                    <textarea id="description" name="description" rows="4" maxlength="600" required class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-900 focus:ring-indigo-600 focus:border-indigo-600"></textarea>
+                </div>
+                
+                <!-- Timeline and Budget -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="timeline" class="block text-sm font-medium text-gray-700">What’s your timeline? (Expected deadline)</label>
+                        <input type="date" id="timeline" name="timeline" class="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-900 focus:ring-indigo-600 focus:border-indigo-600">
+                    </div>
+                    
+                    <div>
+                        <label for="budget" class="block text-sm font-medium text-gray-700">What’s your budget? (What do you expect to pay in total for the project?)</label>
+                        <div class="mt-1 flex rounded-lg shadow-sm">
+                            <span class="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-gray-300 bg-gray-100 text-gray-600 text-base">$</span>
+                            <input type="number" id="budget" name="budget" min="0" placeholder="e.g., 2500" class="flex-1 block w-full rounded-none rounded-r-lg focus:ring-indigo-600 focus:border-indigo-600 border border-gray-300 bg-white text-gray-900 px-4 py-3">
+                        </div>
+                        <p class="mt-1 text-xs text-gray-500">Please provide an estimated figure for the total project cost.</p>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full py-4 px-4 border border-transparent rounded-lg shadow-xl text-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.01]">
+                    Submit Project Proposal
+                </button>
+            </form>
+        </section>
+
     </main>
 
-    <footer>
-      <div>© <span id="year"></span> [Your Name]. All rights reserved.</div>
-      <div>Quiet, precise, and allergic to buzzwords.</div>
+    <!-- Footer -->
+    <footer class="mt-12 py-10 bg-gray-800 text-gray-400 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">&copy; 2024 Anna Lisi Communications. Strategic Clarity & Impact.</p>
+            <div class="mt-4 space-x-6 text-xs">
+                <a href="#services" class="hover:text-indigo-400 transition duration-150">Capabilities</a>
+                <a href="#projects" class="hover:text-indigo-400 transition duration-150">Impact</a>
+                <a href="#contact" class="hover:text-indigo-400 transition duration-150">Contact</a>
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    // Simple dynamic year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
