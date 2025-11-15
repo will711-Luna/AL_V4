@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Editorial Consultant – [Your Name]</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    /* BASIC RESET */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f6f2eb;
+      --bg-alt: #f0e9df;
+      --ink: #1f2933;
+      --muted: #6b7280;
+      --accent: #b45309;
+      --border: #ddd0c0;
+      --radius: 10px;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-serif: "Georgia", "Times New Roman", serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 18px 64px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 18px;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      max-width: 70%;
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .header-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .header-note strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 40px;
+    }
+
+    /* LEFT COLUMN – MAIN CONTENT */
+    .hero {
+      margin-bottom: 32px;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 32rem;
+    }
+
+    .hero-inline-list {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .hero-inline-list span {
+      white-space: nowrap;
+    }
+
+    .hero-inline-list span + span::before {
+      content: " • ";
+      margin: 0 4px;
+    }
+
+    .primary-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      background: transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .primary-cta span.icon {
+      font-size: 1.1rem;
+    }
+
+    .primary-cta:hover {
+      background: #e5daca;
+    }
+
+    /* SECTION STYLES (LEFT COLUMN) */
+    section {
+      margin-bottom: 28px;
+    }
+
+    .section-heading {
+      display: inline-block;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 4px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 12px;
+    }
+
+    .section-body {
+      font-size: 0.94rem;
+      color: var(--ink);
+    }
+
+    .section-body p + p {
+      margin-top: 10px;
+    }
+
+    .two-column-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .list-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+      color: var(--muted);
+    }
+
+    .plain-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.94rem;
+    }
+
+    .plain-list li {
+      padding: 2px 0;
+    }
+
+    /* RIGHT COLUMN – SIDEBAR */
+    .sidebar-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 14px 16px;
+      background: var(--bg-alt);
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .sidebar-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .sidebar-card p + p {
+      margin-top: 8px;
+    }
+
+    .sidebar-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .tag-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-left: 0;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fdfaf5;
+    }
+
+    .small-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .project-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 6px;
+    }
+
+    .project-list li {
+      padding: 4px 0;
+      border-bottom: 1px solid #e1d7c7;
+    }
+
+    .project-list li:last-child {
+      border-bottom: none;
+    }
+
+    .project-title {
+      font-weight: 500;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contact-block {
+      font-size: 0.9rem;
+    }
+
+    .contact-block a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-block a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 32px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .brand {
+        max-width: 100%;
+      }
+
+      .header-note {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-title {
+        font-size: 1.6rem;
+      }
+
+      .two-column-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-title">[Your Name]</div>
+        <div class="brand-subtitle">Editorial consultant for people doing serious work.</div>
+      </div>
+      <div class="header-note">
+        <div><strong>Currently available</strong> for short and mid-length projects.</div>
+        <div>Remote-first · Collaborating with teams across time zones.</div>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT COLUMN -->
+      <div>
+        <section class="hero">
+          <div class="hero-kicker">editor → consultant</div>
+          <h1 class="hero-title">
+            I help you say complicated things in a way people actually read.
+          </h1>
+          <p class="hero-subtitle">
+            I work with researchers, nonprofits, and technical teams who have good ideas,
+            complex material, and no patience for fluff. My work sits between editing, thinking,
+            and quietly asking, “What are we really trying to say here?”
+          </p>
+          <p class="hero-inline-list">
+            <span>Reports &amp; research</span>
+            <span>Guidance &amp; standards</span>
+            <span>Training materials</span>
+            <span>Thought leadership</span>
+          </p>
+          <a href="#contact" class="primary-cta">
+            <span>Request a short consultation</span>
+            <span class="icon">→</span>
+          </a>
+        </section>
+
+        <section aria-labelledby="about-heading">
+          <h2 id="about-heading" class="section-heading">about</h2>
+          <div class="section-body">
+            <p>
+              I spent years as an editor inside teams that were under-resourced, overloaded,
+              and working on things that actually matter. My role was to make sure the final
+              output respected both the subject and the reader.
+            </p>
+            <p>
+              Now I work independently with organizations that need more than a proofread.
+              I help you shape the idea, structure the argument, and make decisions about what
+              belongs on the page – and what doesn’t. The goal: documents that are accurate,
+              readable, and honest about their limitations.
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="services-heading">
+          <h2 id="services-heading" class="section-heading">services</h2>
+          <div class="section-body">
+            <p>
+              I usually work on one of three things: making an existing document better;
+              planning communications for a project or program; or sitting beside your team as
+              a quiet, long-term editorial partner.
+            </p>
+
+            <div class="two-column-list">
+              <div>
+                <div class="list-title">Editing & writing</div>
+                <ul class="plain-list">
+                  <li>Developmental editing: structure, argument, coherence.</li>
+                  <li>Line editing: clarity, tone, and rhythm sentence by sentence.</li>
+                  <li>Plain-language rewrites for technical or policy-heavy content.</li>
+                  <li>Light ghostwriting based on notes, transcripts, or slides.</li>
+                </ul>
+              </div>
+              <div>
+                <div class="list-title">Consulting & support</div>
+                <ul class="plain-list">
+                  <li>Helping you decide what to publish and why.</li>
+                  <li>Mapping audiences, formats, and channels for a project.</li>
+                  <li>Designing templates and document standards you can keep using.</li>
+                  <li>On-call editorial partner for a program, team, or small org.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="approach-heading">
+          <h2 id="approach-heading" class="section-heading">how i work</h2>
+          <div class="section-body">
+            <p><strong>1. Short call, clear decision.</strong> We talk for 30–45 minutes about the work,
+              your constraints, and what has to be true for this to feel successful.</p>
+            <p><strong>2. Lightweight plan.</strong> I send a one-page note with what I’ll do,
+              how much I’ll touch, and how we’ll give each other feedback.</p>
+            <p><strong>3. Deep, quiet work.</strong> You get back marked-up documents and a short written
+              summary of decisions, questions, and options, not just a file full of tracked changes.</p>
+            <p><strong>4. Hand-over, not drop-off.</strong> Where useful, I add a short “editor’s note”
+              you can keep and reuse – style decisions, patterns that worked, and things to avoid next time.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN / SIDEBAR -->
+      <aside aria-label="Sidebar information">
+        <div class="sidebar-card">
+          <div class="sidebar-label">who this is for</div>
+          <h3>You don’t need a brand overhaul. You need your words to stop fighting you.</h3>
+          <p>
+            Clients are usually researchers, program leads, or small communications teams who
+            are juggling too many deliverables and don’t have time to babysit a consultant.
+          </p>
+          <ul class="tag-list">
+            <li class="tag">Global health & social impact</li>
+            <li class="tag">Academic & applied research</li>
+            <li class="tag">Policy & standards</li>
+            <li class="tag">Nonprofits & small orgs</li>
+          </ul>
+          <p class="small-note">
+            If your work is highly polished marketing copy or conversion funnels, I am not the right person.
+          </p>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-label">sample projects</div>
+          <ul class="project-list">
+            <li>
+              <div class="project-title">Flagship report, 90+ pages</div>
+              <div class="project-meta">
+                Restructured, edited, and coordinated with design to produce a report people
+                actually read, not just cite.
+              </div>
+            </li>
+            <li>
+              <div class="project-title">Training materials for practitioners</div>
+              <div class="project-meta">
+                Turned dense technical content into a clear sequence of modules, with examples
+                and language that respect learners’ time.
+              </div>
+            </li>
+            <li>
+              <div class="project-title">Executive summary & slide deck</div>
+              <div class="project-meta">
+                Took a heavy full report and built a concise summary and deck leaders could
+                actually use in real meetings.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card" id="contact">
+          <div class="sidebar-label">contact</div>
+          <h3>Tell me what you’re working on.</h3>
+          <div class="contact-block">
+            <p>
+              Send an email with:
+            </p>
+            <ul class="plain-list" style="margin-top: 4px; margin-bottom: 8px;">
+              <li>1–2 sentences on what the document or project is.</li>
+              <li>Who needs to read it (honestly).</li>
+              <li>Your deadline and any non-negotiables.</li>
+            </ul>
+            <p>
+              Email: <a href="mailto:you@example.com">you@example.com</a><br>
+              Subject line suggestion: <em>“Editorial help for [project name]”</em>
+            </p>
+            <p class="small-note">
+              If I’m not the right fit, I’ll say so and, where possible, point you in a better direction.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> [Your Name]. All rights reserved.</div>
+      <div>Quiet, precise, and allergic to buzzwords.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
